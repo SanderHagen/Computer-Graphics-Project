@@ -3,6 +3,7 @@ var scene = new THREE.Scene();
 
 
 var renderer = CreateRenderer();
+var vector = new THREE.Vector3(); 
 
 //create meshes
 var geometry = new THREE.BoxGeometry(1,1,1);
@@ -18,15 +19,11 @@ var camera = CreateCamera();
 
 var controls = CreateControls(camera);
 
+scene.add(controls.getObject());
+
 AddSun(scene);
 
 CreateSkyBox(scene);
 
-var render = function(){
-	requestAnimationFrame(render);
 
-	controls.update();
-	renderer.render(scene,camera);
-}
-
-render();
+animate();

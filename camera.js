@@ -6,8 +6,12 @@ function CreateCamera(){
         0.1, // near — Camera frustum near plane.
         10000); // far — Camera frustum far plane. 
 
-    camera.position.x = 7;
-    camera.position.y = 4;
-    camera.position.z = 25;    
+    camera.position.x = 1;
+    camera.position.y = 1;
+    camera.position.z = 2;    
     return camera;
+
+    
 }
+
+
