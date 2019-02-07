@@ -6,12 +6,13 @@ var renderer = CreateRenderer();
 var vector = new THREE.Vector3(); 
 
 //create meshes
-var geometry = new THREE.BoxGeometry(1,1,1);
-var material = new THREE.MeshPhongMaterial({color:0x27a,shininess:0});
-var cube = new THREE.Mesh(geometry, material);
-cube.position.set(0,50,1);
+var cube = CreateBase(15,5);
 
 scene.add(cube);
+
+var cube2 = CreateBase(25,25);
+
+scene.add(cube2);
 
 scene.add(CreateFloor());
 
