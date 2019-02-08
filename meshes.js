@@ -35,22 +35,21 @@ function createPyramid(x,y,z){
         new THREE.Vector3(x, (y+5), z)
     );
 
-
-
     geometry.faces.push(
         new THREE.Face3( 2,1,4),
         new THREE.Face3( 1,3,4),
         new THREE.Face3( 3,0,4),
         new THREE.Face3( 0,2,4),
     );
-
-    geometry.computeBoundingSphere();
+    geometry.computeFaceNormals();
+    geometry.computeVertexNormals();
+    //geometry.computeBoundingSphere();
     return geometry;
 }
 
 function CreateRoof(x, y, z){
     var texture = new THREE.TextureLoader().load( "images/rooftexture.jpg" );
-    var material = new THREE.MeshBasicMaterial( { map : texture} );
+    var material = new THREE.MeshStandardMaterial( { map : texture} );
     var geometry = createPyramid(x,y,z);
     var roof = new THREE.Mesh(geometry,material);
     return roof;

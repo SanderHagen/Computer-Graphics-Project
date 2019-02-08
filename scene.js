@@ -10,7 +10,15 @@ var cube = CreateBase(15,10,5);
 
 var roof = CreateRoof(15,10,5);
 
-scene.add(roof);
+var geometry = new THREE.CylinderGeometry( 0, 7, 5, 4 );
+var texture = new THREE.TextureLoader().load( "images/rooftexture.jpg" );
+var material = new THREE.MeshBasicMaterial( {map:texture} );
+var cylinder = new THREE.Mesh( geometry, material );
+cylinder.position.set(15,12.5,5);
+cylinder.rotation.set(0,40,0);
+scene.add( cylinder );
+
+//scene.add(roof);
 
 scene.add(cube);
 
