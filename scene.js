@@ -6,11 +6,19 @@ var renderer = CreateRenderer();
 var vector = new THREE.Vector3(); 
 
 //create meshes
-var cube = CreateBase(15,5);
+var cube = CreateBase(15,10,5);
+
+var roof = CreateRoof(15,10,5);
+
+scene.add(roof);
 
 scene.add(cube);
 
-var cube2 = CreateBase(25,25);
+var cube2 = CreateBase(25,10,25);
+
+var roof2 = CreateRoof(25,10,25);
+
+scene.add(roof2);
 
 scene.add(cube2);
 
