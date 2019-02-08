@@ -15,7 +15,10 @@ function CreateFloor(){
 function CreateBase(x,y,z){
     var geometry = new THREE.BoxGeometry(10,y,10);
     geometry.computeBoundingSphere();
-    var material = new THREE.MeshPhongMaterial({color:0xffffff,shininess:100});
+
+    var texture = new THREE.TextureLoader().load( "images/bricktexture.jpg" );
+
+    var material = new THREE.MeshBasicMaterial({map:texture});
     var cube = new THREE.Mesh(geometry, material);
     cube.position.set(x,(y/2),z);
     return cube;
@@ -31,12 +34,14 @@ function createPyramid(x,y,z){
         new THREE.Vector3( (x+5), y, (z-5 )),
         new THREE.Vector3(x, (y+5), z)
     );
-    var color = new THREE.Color( 0xffaa00 ); 
+
+
+
     geometry.faces.push(
-        new THREE.Face3( 2,1,4,null,color),
-        new THREE.Face3( 1,3,4,null,color),
-        new THREE.Face3( 3,0,4,null,color),
-        new THREE.Face3( 0,2,4,null,color),
+        new THREE.Face3( 2,1,4),
+        new THREE.Face3( 1,3,4),
+        new THREE.Face3( 3,0,4),
+        new THREE.Face3( 0,2,4),
     );
 
     geometry.computeBoundingSphere();
@@ -44,7 +49,9 @@ function createPyramid(x,y,z){
 }
 
 function CreateRoof(x, y, z){
+    var texture = new THREE.TextureLoader().load( "images/rooftexture.jpg" );
+    var material = new THREE.MeshBasicMaterial( { map : texture} );
     var geometry = createPyramid(x,y,z);
-    var roof = new THREE.Mesh(geometry);
+    var roof = new THREE.Mesh(geometry,material);
     return roof;
 }
