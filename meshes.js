@@ -35,14 +35,35 @@ function createPyramid(x,y,z){
         new THREE.Vector3(x, (y+5), z)
     );
 
+    var uvs = [];
+    uvs.push( new THREE.Vector2((x-5), y));
+    uvs.push( new THREE.Vector2( (x+5), y));
+    uvs.push( new THREE.Vector2( (x-5), y) );
+    uvs.push(new THREE.Vector2( (x+5), y));
+    uvs.push(new THREE.Vector2(x, (y+5))); // has to be 1.0,1.0
+    geometry.faceVertexUvs[0] = [];
+    geometry.faceVertexUvs[ 0 ][0] =  [ uvs[2], uvs[1], uvs[4]];
+    geometry.faceVertexUvs[ 0 ][1]=[ uvs[1], uvs[3], uvs[4]];
+    geometry.faceVertexUvs[ 0 ][2]= [ uvs[3], uvs[0], uvs[4]];
+    geometry.faceVertexUvs[ 0 ][3]= [ uvs[0], uvs[2], uvs[4]] ;
+    //geometry.faceVertexUvs[ 0 ].push( [ uvs[2], uvs[3], uvs[0] ] );
+
     geometry.faces.push(
         new THREE.Face3( 2,1,4),
         new THREE.Face3( 1,3,4),
         new THREE.Face3( 3,0,4),
         new THREE.Face3( 0,2,4),
     );
-    geometry.computeFaceNormals();
-    geometry.computeVertexNormals();
+    //geometry.computeFaceNormals();
+    //geometry.computeVertexNormals();
+
+    geometry.faceVertexUvs[0].push(
+        new THREE.Vector3( (x-5), y, (z-5)),
+         new THREE.Vector3( (x+5), y, (z+5)),
+         new THREE.Vector3((x-5), y, (z+5 )),
+         new THREE.Vector3( (x+5), y, (z-5) ),
+         new THREE.Vector3(x, (y+5), z)
+    );
     //geometry.computeBoundingSphere();
     return geometry;
 }
