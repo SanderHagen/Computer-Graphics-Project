@@ -80,25 +80,49 @@ function CreateRoof(x, y, z, scene){
 
 function CreateTree(x,y,z){
     var material = new THREE.MeshPhongMaterial({color:'darkolivegreen'});
-    var geometry = new THREE.CylinderGeometry(4,4,50,32);
+    var geometry = new THREE.CylinderGeometry(3,3,50,32);
     var cylinder = new THREE.Mesh(geometry,material);
 
     var canopy = new THREE.SphereGeometry(5,32,32);
     var canopymesh = new THREE.Mesh(canopy,material);
     canopymesh.position.set(x,y+25,z);    
     
-    var canopy2 = new THREE.SphereGeometry(2,32,32);
+    var canopy2 = new THREE.SphereGeometry(3,32,32);
     var canopymesh2 = new THREE.Mesh(canopy2,material);
-    canopymesh2.position.set(x-4,y+28,z);
+    canopymesh2.position.set(x-2,y+27,z);
 
     var canopymesh3 = new THREE.Mesh(canopy2,material);
-    canopymesh3.position.set(x+4,y+28,z);
+    canopymesh3.position.set(x+2,y+27,z);
 
     var canopymesh4 = new THREE.Mesh(canopy2,material);
-    canopymesh4.position.set(x,y+28,z+4);
+    canopymesh4.position.set(x,y+27,z+2);
 
     var canopymesh5 = new THREE.Mesh(canopy2,material);
-    canopymesh5.position.set(x,y+28,z-4);
+    canopymesh5.position.set(x,y+27,z-2);
+
+    var canopymesh6 = new THREE.Mesh(canopy2,material);
+    canopymesh6.position.set(x-2,y+23,z);
+
+    var canopymesh7 = new THREE.Mesh(canopy2,material);
+    canopymesh7.position.set(x+2,y+23,z);
+
+    var canopymesh8 = new THREE.Mesh(canopy2,material);
+    canopymesh8.position.set(x,y+23,z+2);
+
+    var canopymesh9 = new THREE.Mesh(canopy2,material);
+    canopymesh9.position.set(x,y+23,z-2);
+
+    var canopymesh10 = new THREE.Mesh(canopy2,material);
+    canopymesh10.position.set(x-4,y+25,z);
+
+    var canopymesh11 = new THREE.Mesh(canopy2,material);
+    canopymesh11.position.set(x+4,y+25,z);
+
+    var canopymesh12 = new THREE.Mesh(canopy2,material);
+    canopymesh12.position.set(x,y+25,z+4);
+
+    var canopymesh13 = new THREE.Mesh(canopy2,material);
+    canopymesh13.position.set(x,y+25,z-4);
 
     cylinder.position.set(x,y,z);
 
@@ -107,5 +131,13 @@ function CreateTree(x,y,z){
     scene.add(canopymesh3);
     scene.add(canopymesh4);
     scene.add(canopymesh5);
+    scene.add(canopymesh6);
+    scene.add(canopymesh7);
+    scene.add(canopymesh8);
+    scene.add(canopymesh9);
+    scene.add(canopymesh10);
+    scene.add(canopymesh11);
+    scene.add(canopymesh12);
+    scene.add(canopymesh13);
     scene.add(cylinder);
 }
