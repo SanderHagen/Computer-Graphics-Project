@@ -6,9 +6,9 @@ var renderer = CreateRenderer();
 var vector = new THREE.Vector3(); 
 
 //create meshes
-var cube = CreateBase(15,10,5);
+CreateBase(15,10,5,scene);
 
-var roof = CreateRoof(15,10,5);
+//CreateRoof(15,10,5,scene);
 
 var geometry = new THREE.CylinderGeometry( 0, 7, 5, 4 );
 var texture = new THREE.TextureLoader().load( "images/rooftexture.jpg" );
@@ -18,19 +18,14 @@ cylinder.position.set(15,12.5,5);
 cylinder.rotation.set(0,40,0);
 scene.add( cylinder );
 
-//scene.add(roof);
 
-scene.add(cube);
+CreateBase(25,10,25,scene);
 
-var cube2 = CreateBase(25,10,25);
+CreateRoof(25,10,25,scene);
 
-var roof2 = CreateRoof(25,10,25);
+CreateFloor(scene);
 
-scene.add(roof2);
-
-scene.add(cube2);
-
-scene.add(CreateFloor());
+CreateTree(-20,0,-40,scene);
 
 var camera = CreateCamera();
 

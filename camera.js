@@ -9,6 +9,7 @@ function CreateCamera(){
     camera.position.x = 1;
     camera.position.y = 0;
     camera.position.z = 1;    
+
     return camera;
 
     

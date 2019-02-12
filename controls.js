@@ -19,7 +19,7 @@ function CreateControls(camera){
     controls.staticMoving = true;
     controls.dynamicDampingFactor = 0.3;
 
-
+    camera.rotation.set(0,0,0);
     document.addEventListener( 'click', function () {
         controls.lock();
     }, false );
@@ -78,14 +78,14 @@ function animate() {
     if ( controls.isLocked === true ) {
 
         var time = performance.now();
-        var delta = ( time - prevTime ) / 1000;
+        var delta = ( time - prevTime ) / 1000; // used for acceleration
         velocity.x -= velocity.x * 10.0 * delta;
         velocity.z -= velocity.z * 10.0 * delta;
         velocity.y -= 9.8 * 100.0 * delta; // 100.0 = mass
         direction.z = Number( moveForward ) - Number( moveBackward );
         direction.x = Number( moveLeft ) - Number( moveRight );
-        direction.normalize(); // this ensures consistent movements in all directions
-        if ( moveForward || moveBackward ) velocity.z -= direction.z * 400.0 * delta;
+        direction.normalize(); // make the vectorlength 1
+        if ( moveForward || moveBackward ) velocity.z -= direction.z * 400.0 * delta; // if pressing s or arrow down change the velocity
         if ( moveLeft || moveRight ) velocity.x -= direction.x * 400.0 * delta;
 
         controls.getObject().translateX( velocity.x * delta );
@@ -93,7 +93,7 @@ function animate() {
         controls.getObject().translateZ( velocity.z * delta );
         if ( controls.getObject().position.y < 10 ) {
             velocity.y = 0;
-            controls.getObject().position.y = 10;
+            controls.getObject().position.y = 10; //make sure the camera doesn't change along y axis.
         }
         prevTime = time;
     }
