@@ -79,7 +79,7 @@ function CreateRoof(x, y, z, scene){
 }
 
 function CreateTree(x,y,z){
-    var material = new THREE.MeshPhongMaterial({color:'darkolivegreen'});
+    var material = new THREE.MeshPhongMaterial({color:'darkolivegreen', reflectivity: 0.5});
     var geometry = new THREE.CylinderGeometry(3,3,50,32);
     var cylinder = new THREE.Mesh(geometry,material);
 
