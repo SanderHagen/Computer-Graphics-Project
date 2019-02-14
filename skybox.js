@@ -3,7 +3,7 @@ function CreateSkyBox(scene) {
     var materialArray = [];
     for (var i = 0; i < 6; i++) {
         materialArray.push(
-            new THREE.MeshBasicMaterial({
+            new THREE.MeshLambertMaterial({
                 map: THREE.ImageUtils.loadTexture(dir_names[i]),
                 side: THREE.BackSide,
             })

@@ -7,13 +7,13 @@ function CreateFloor(scene) {
     texture.wrapT = THREE.RepeatWrapping;
     texture.repeat.set(10, 10);
 
-    var material = new THREE.MeshBasicMaterial({ map: texture });
+    var material = new THREE.MeshPhongMaterial({ map: texture });
     var floor = new THREE.Mesh(geometry, material);
     scene.add(floor);
 }
 
-function CreateBase(x, y, z, scene) {
-    var geometry = new THREE.BoxGeometry(10, y, 10);
+function CreateBase(x, y, z, scale, scene) {
+    var geometry = new THREE.BoxGeometry(scale * 2, y, scale * 2);
     geometry.computeBoundingSphere();
 
     var texture = new THREE.TextureLoader().load("images/bricktexture.jpg");
@@ -24,15 +24,15 @@ function CreateBase(x, y, z, scene) {
     scene.add(cube);
 }
 
-function createPyramid(x, y, z) {
+function createPyramid(x, y, z, scale) {
     var geometry = new THREE.Geometry();
 
     geometry.vertices.push(
-        new THREE.Vector3((x - 5), y, (z - 5)),
-        new THREE.Vector3((x + 5), y, (z + 5)),
-        new THREE.Vector3((x - 5), y, (z + 5)),
-        new THREE.Vector3((x + 5), y, (z - 5)),
-        new THREE.Vector3(x, (y + 5), z)
+        new THREE.Vector3((x - scale), y, (z - scale)),
+        new THREE.Vector3((x + scale), y, (z + scale)),
+        new THREE.Vector3((x - scale), y, (z + scale)),
+        new THREE.Vector3((x + scale), y, (z - scale)),
+        new THREE.Vector3(x, (y + scale), z)
     );
 
     var uvs = [];
@@ -42,8 +42,6 @@ function createPyramid(x, y, z) {
     uvs.push(new THREE.Vector2(1, 1));
     geometry.faceVertexUvs[0] = [];
 
-    //geometry.faceVertexUvs[ 0 ].push( [ uvs[2], uvs[3], uvs[0] ] );
-
     //Direction the object is shown (should be from inner to outer)
     geometry.faces.push(
         new THREE.Face3(2, 1, 4),
@@ -52,39 +50,22 @@ function createPyramid(x, y, z) {
         new THREE.Face3(0, 2, 4),
     );
 
-    //Front
     geometry.faceVertexUvs[0][0] = [uvs[2], uvs[0], uvs[1]];
-
-    //Left
     geometry.faceVertexUvs[0][1] = [uvs[0], uvs[2], uvs[1]];
-
-    //Back
     geometry.faceVertexUvs[0][2] = [uvs[0], uvs[2], uvs[1]];
-
-    //Right
     geometry.faceVertexUvs[0][3] = [uvs[0], uvs[2], uvs[1]];
-
 
     geometry.computeFaceNormals();
     geometry.computeVertexNormals();
-
-    /*
-    geometry.faceVertexUvs[0].push(
-        new THREE.Vector3((x - 5), y, (z - 5)),
-        new THREE.Vector3((x + 5), y, (z + 5)),
-        new THREE.Vector3((x - 5), y, (z + 5)),
-        new THREE.Vector3((x + 5), y, (z - 5)),
-        new THREE.Vector3(x, (y + 5), z)
-    );
-    */
-    //geometry.computeBoundingSphere();
+    geometry.computeBoundingSphere();
     return geometry;
+
 }
 
-function CreateRoof(x, y, z, scene) {
+function CreateRoof(x, y, z, scale, scene) {
     var texture = new THREE.TextureLoader().load("images/rooftexture.jpg");
-    var material = new THREE.MeshStandardMaterial({ map: texture });
-    var geometry = createPyramid(x, y, z);
+    var material = new THREE.MeshPhongMaterial({ map: texture });
+    var geometry = createPyramid(x, y, z, scale);
     var roof = new THREE.Mesh(geometry, material);
     scene.add(roof);
 }

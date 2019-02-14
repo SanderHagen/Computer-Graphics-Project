@@ -17,7 +17,7 @@ AddLights(scene);
 //Create a house with custom geometry roof
 function CreateHouseWithCustomRoof() {
     //create meshes
-    CreateBase(15, 10, 5, scene);
+    CreateBase(15, 10, 5, 5, scene);
 
     var geometry = new THREE.CylinderGeometry(0, 7, 5, 4);
     var texture = new THREE.TextureLoader().load("images/rooftexture.jpg");
@@ -29,15 +29,15 @@ function CreateHouseWithCustomRoof() {
 }
 
 //Create a simple house
-function CreateHouse(x, y, z) {
-    CreateBase(x, y, z, scene);
-    CreateRoof(x, y, z, scene);
+function CreateHouse(x, y, z, scale) {
+    CreateBase(x, y, z, scale, scene);
+    CreateRoof(x, y, z, scale, scene);
 }
 
 function AddObjectsToScene() {
     //Houses
     CreateHouseWithCustomRoof();
-    CreateHouse(25, 10, 25);
+    CreateHouse(-50, 30, 25, 15);
 
     //Floor
     CreateFloor(scene);

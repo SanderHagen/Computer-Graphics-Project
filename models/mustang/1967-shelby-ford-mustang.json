@@ -50,7 +50,7 @@
                 "type": "DirectionalLight",
                 "castShadow": false,
                 "color": 7838134,
-                "intensity": 0.75,
+                "intensity": 0.00,
                 "distance": 0
             },{
                 "name": "FillLight",
@@ -60,7 +60,7 @@
                 "type": "DirectionalLight",
                 "castShadow": false,
                 "color": 15062196,
-                "intensity": 0.85,
+                "intensity": 0.00,
                 "distance": 0
             },{
                 "name": "KeyLight",
@@ -70,7 +70,7 @@
                 "type": "DirectionalLight",
                 "castShadow": false,
                 "color": 16776180,
-                "intensity": 1,
+                "intensity": 0,
                 "distance": 0
             }]
         },{
