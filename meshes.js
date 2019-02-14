@@ -1,5 +1,5 @@
 function CreateFloor(scene) {
-    var geometry = new THREE.BoxGeometry(300, 1, 300);
+    var geometry = new THREE.BoxGeometry(600, 1, 600);
 
     // load a texture, set wrap mode to repeat
     var texture = new THREE.TextureLoader().load("images/groundtexture.jpg");
@@ -7,7 +7,7 @@ function CreateFloor(scene) {
     texture.wrapT = THREE.RepeatWrapping;
     texture.repeat.set(10, 10);
 
-    var material = new THREE.MeshPhongMaterial({ map: texture });
+    var material = new THREE.MeshBasicMaterial({ map: texture });
     var floor = new THREE.Mesh(geometry, material);
     scene.add(floor);
 }
