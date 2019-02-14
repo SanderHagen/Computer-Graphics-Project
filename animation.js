@@ -4,7 +4,28 @@ function animate() {
 
     AnimateLights();
 
+    MoveCar();
+
     renderer.render(scene, camera);
+}
+var movingBack = false;
+function MoveCar(){
+    if(car !== undefined){
+
+        if(movingBack){
+            car.position.z -= 1;
+        }else{
+            car.position.z += 1;            
+        }
+        if(car.position.z > 100){
+            movingBack = true;
+            car.rotateY(THREE.Math.degToRad(180));
+        }
+        if(car.position.z < -100){
+            movingBack = false;
+            car.rotateY(THREE.Math.degToRad(180));
+        }
+    }
 }
 
 var change = -0.001;
