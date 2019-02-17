@@ -3,9 +3,10 @@ function CreateSkyBox(scene) {
     var materialArray = [];
     for (var i = 0; i < 6; i++) {
         materialArray.push(
-            new THREE.MeshLambertMaterial({
+            new THREE.MeshPhongMaterial({
                 map: THREE.ImageUtils.loadTexture(dir_names[i]),
                 side: THREE.BackSide,
+                emissive: 0x111111
             })
         );
     }
